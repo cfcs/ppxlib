@@ -15,6 +15,13 @@ reinstall: uninstall reinstall
 test:
 	jbuilder runtest --dev
 
+doc:
+	cd doc && sphinx-build . _build
+
+livedoc:
+	cd doc && sphinx-autobuild . _build \
+	  -p 8888 -q  --host $(shell hostname) -r '\.#.*'
+
 clean:
 	rm -rf _build
 
